@@ -1,0 +1,24 @@
+{
+  "name": "hola-mundo",
+  "version": "1.0.0",
+  "description": "Este es mi primer proyecto de Javascript con Node en Open Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudiahcarril/OpenBootcamp.git"
+  },
+  "keywords": [
+    "holamundo",
+    "firstproject"
+  ],
+  "author": "Claudia Hernández",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claudiahcarril/OpenBootcamp/issues"
+  },
+  "homepage": "https://github.com/claudiahcarril/OpenBootcamp#readme"
+}
