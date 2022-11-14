@@ -38,3 +38,4 @@ console.log(texto_largo.replace("los", "cinco"));
 
 console.log(texto_largo.replace(/los/g, "cinco"));
 
+
