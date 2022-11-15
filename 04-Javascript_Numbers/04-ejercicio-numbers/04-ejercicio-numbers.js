@@ -22,6 +22,16 @@ let round_altura = altura_metros.toFixed();
 console.log(round_altura)
 
 // Una variable que contenga tu peso en kilogramos redondeado hacia abajo
-let round_peso = peso.toFixed()
+let round_peso = Math.floor(peso);
+console.log(round_peso)
 
 // Una variable que contenga si "el máximo valor que se puede obtener en Javascript + 1" es igual al máximo valor que se puede obtener en Javascript*/
+let max_valor_JS = false;
+if (Number.MAX_VALUE === Number.MAX_VALUE + 1) {
+    max_valor_JS = true;
+    console.log(max_valor_JS);
+} else {
+    console.log(max_valor_JS)
+}
+
+
