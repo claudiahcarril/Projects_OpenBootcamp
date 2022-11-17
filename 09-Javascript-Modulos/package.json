@@ -1,0 +1,13 @@
+{
+  "name": "09-javascript-modulos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index-modulo.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index-modulo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
