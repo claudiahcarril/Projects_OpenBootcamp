@@ -1,0 +1,44 @@
+/* Estilos para colores*/
+.colores {
+    color: orangered;
+}
+
+.color-hexadecimal {
+    color: #BCE784;
+}
+
+.color-rgb {
+    color: rgb(53, 71, 226);
+}
+
+
+.color-rgba{
+    color: rgba(10, 10, 10, 0.85);
+}
+
+
+/* Fondos */
+.fondo{
+    background-color: cornflowerblue;
+    background-image: url("https://www.shutterstock.com/image-vector/colourful-landing-page-background-eps-260nw-1920897089.jpg");
+    background-position: left center;
+}
+
+
+/* Tamaños */
+.ancho {
+    background-color: #BCE784;
+    width: 100px;
+}
+
+.alto {
+    background-color: aquamarine;
+    height: 200px;
+}
+
+
+.tarjeta {
+    border: solid 1px black;
+    padding: 10px 20px;
+    margin: 20px 10px;
+}
