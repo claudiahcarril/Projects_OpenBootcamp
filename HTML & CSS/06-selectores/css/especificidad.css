@@ -1,0 +1,26 @@
+/* (1, 0, 0) */
+/* (0, 1, 0) */
+/* (0, 0, 1) */
+/* (0, 0, 0) */
+
+#h1-id.h1-clase { /* (1, 1, 0) */
+    color: darksalmon;
+}
+
+
+.h1-clase { /* (0, 1, 0) */
+    color: yellow;
+}
+
+h1 { /* (0, 0, 1) */
+    color: blue;
+}
+
+
+p {
+    color: red !important; /* Nivel superior de especificidad*/
+}
+
+p {
+    color: black;
+}
