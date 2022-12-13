@@ -1,0 +1,46 @@
+.main {
+    display: flex;
+    min-height: 500px;
+    flex-direction: column;
+
+}
+
+.barra-lateral {
+    background-color: salmon;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    background-color: white;
+    margin: 10px 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+
+}
+
+.section {
+    background-color: darkorchid;
+    flex-grow: inherit;
+    width: 100%;
+}
+
+
+
+
+@media (min-width: 640px) {
+    .main {
+        flex-direction: row;
+    }
+        
+    .barra-lateral {
+        flex-direction: row;
+    }
+
+    .section {
+        width: 100%;
+    }
+}
