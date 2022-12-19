@@ -1,0 +1,36 @@
+@use "sass:string";
+@use "sass:math";
+@use "sass:list";
+
+///// FUNCIONES CON STRINGS
+@debug "hola";
+@debug string.index("Helvetica Neue", "Neue"); // 11
+
+$string: "Helvetica";
+$newString: string.insert($string, " Bold", 10);
+
+@debug $newString;
+@debug string.length($newString);
+@debug string.slice($newString, 5, 9);
+
+@debug string.to-upper-case("Roboto Mono");
+@debug string.to-lower-case("Roboto Mono");
+
+
+///// FUNCIONES CON NÚMEROS
+@debug math.$e;
+
+@debug math.max(3, 4, 5, 67, 399);
+@debug math.min(3, 4, 5, 67, 399);
+
+@debug math.round(4.4);
+
+
+///// FUNCIONES CON LISTAS
+$lista1: 10px 10px 0px 15px;
+@debug list.append($lista1, 25px);
+
+$border-custom: solid 1px #ccc;
+@debug list.index($border-custom, 1px); //Posición 2
+
+@debug list.join($lista1, $border-custom, auto)
