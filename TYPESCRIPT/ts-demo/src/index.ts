@@ -239,3 +239,94 @@ do {
     tarea1.importancia++
     tarea1.estado = Estados.Completado
 } while (tarea1.estado !== Estados.Completado);
+
+
+
+
+
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+// FUNCIONES
+
+/**
+ * Función que muestra un saludo por consola
+ */
+function saludar() {
+    let nombre = "Claudia"
+    console.log(`Hola ${nombre}`)    
+}
+
+// Invocación de la función
+saludar()
+
+
+/**
+ * Función que muestra un saludo por consola a una persona
+ * @param nombre Nombre de la persona a saludar
+ */
+function saludarPersona(nombre: string) {
+    console.log(`Hola ${nombre}`) 
+}
+
+saludarPersona("Claudia")
+
+
+/**
+ * Función que muestra un adiós por consola a una persona
+ * @param nombre Nombre de la persona a saludar, por defecto será "Pepe"
+ */
+function despedirPersona(nombre: string = "Pepe") {
+    console.log(`Adiós ${nombre}`)
+}
+
+despedirPersona() // Adiós Pepe
+despedirPersona("Alba") // Adiós Alba
+
+
+/**
+ * Función que muestra un adiós por consola a una persona
+ * @param nombre (OPcional) Nombre de la persona a despedir
+ */
+function despedidaOpcional(nombre?: string | undefined) {
+    if (nombre) {
+        console.log(`Adiós ${nombre}`)
+    } else {
+        console.log(`Adiós`)
+    }
+}
+
+despedidaOpcional() // Adiós
+despedidaOpcional("Juanjo") // Adiós Juanjo
+
+
+
+function variosParams(nombre: string, apellidos?: string, edad: number = 18 ) {
+    if (apellidos) {
+        console.log(`${nombre} ${apellidos} tiene ${edad} años`)
+    } else {
+        console.log(`${nombre} tiene ${edad} años`)
+    }
+}
+
+variosParams("Martin") // Martín tiene 18 años
+variosParams("Martín", "Pérez") // Martín Pérez tiene 18 años
+variosParams("Martín", undefined, 30) // Martín tiene 30 años
+variosParams("Martin", "Pérez", 30) // Martín Pérez tiene 30 años
+variosParams(nombre="Martín", apellidos="Pérez", edad = 30) // Martín Pérez tiene 30 años
+
+
+
+function ejemploVariosTipos(a: string | number) {
+    if (typeof(a) === 'string') {
+        console.log("A es un string")
+    } else if (typeof(a) === 'number') {
+        console.log("A es un number")
+    }
+    else {
+        console.log("A no es un number ni un string")
+        throw Error ("A no es un string ni un number")
+    }
+}
+
+ejemploVariosTipos("Hola")
+ejemploVariosTipos(3)
