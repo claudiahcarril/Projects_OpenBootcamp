@@ -1,6 +1,7 @@
 // Esto es un comentario en  TS
 
 import { deleteAllCookies, deleteCookie, getCookieValue, setCookie } from 'cookies-utils'
+import { LISTA_CURSOS } from './mock/cursos.mock'
 
 /**
  * Generando Documentación en TS
@@ -561,4 +562,49 @@ setInterval(() => console.log("Tic"), 1000) // Imprimir "tic" cada segundo por c
 // Eliminar la ejecución de la función
 delete miTemporizador.terminar
 
+
+
+
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+// CLASES Y OBJETOS
+
+// Importación
+import { Curso } from './models/curso'
+import { Estudiante } from './models/Estudiante'
+
+
+
+// Creamos un curso (Instanciamos)
+
+const cursoTS: Curso = new Curso("TypeScript", 15)
+const cursoJS: Curso = new Curso("JavaScript", 20)
+
+
+const listaCursos: Curso[] = LISTA_CURSOS
+
+listaCursos.push(cursoTS, cursoJS)
+
+
+// Creamos un estudiante
+
+const martin: Estudiante = new Estudiante("Martin", listaCursos, "San Jose")
+
+console.log(`${martin.nombre} estudia: `)
+martin.cursos.forEach((curso: Curso) => {
+    console.log(`- ${curso.nombre} (${curso.horas}) horas`) // TypeScript (15 horas)
+})
+
+const cursoAngular: Curso = new Curso("Angular", 40)
+
+martin.cursos.push(cursoAngular) // Añadimos
+
+
+// Conocer horas estudiadas
+martin.horasEstudiadas //number
+
+
+// Saber la instancia de un objeto/variable
+// - typeOf
+// - instanceOf
 
