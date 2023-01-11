@@ -330,3 +330,143 @@ function ejemploVariosTipos(a: string | number) {
 
 ejemploVariosTipos("Hola")
 ejemploVariosTipos(3)
+
+/**
+ * 
+ * @param nombre Nombre de la persona
+ * @param apellidos Apellidos de la persona
+ * @returns Nombre completo de la persona
+ */
+function ejemploReturn(nombre: string, apellidos: string): string | number{
+    return `${nombre} ${apellidos}`
+}
+
+const nombreCompleto = ejemploReturn("Claudia", "Hernández")
+console.log(nombreCompleto) // Claudia Hernández
+console.log(ejemploReturn("Claudia", "Hernández")) // Claudia Hernández
+
+
+/**
+ * Función con factor de propagación
+ * @param nombres es una lista de nombres de string
+ */
+function ejemploMultipleParams(...nombres: string[]){
+    nombres.forEach((nombre) => {
+        console.log(nombre)
+    })
+}
+
+ejemploMultipleParams("Claudia")
+ejemploMultipleParams("Claudia", "Laura", "Pepe")
+
+
+const lista = ["Alberto", "Sandra"]
+ejemploMultipleParams(...lista)
+
+
+
+// --------------------------------------------------------------------------------------
+// ARROW FUNCTIONS
+
+type Empleado = {
+    nombre: string,
+    apellidos: string,
+    edad: number
+}
+
+let empleadoMartin: Empleado = {
+    nombre: "Claudia",
+    apellidos: "Hernández",
+    edad: 32
+}
+
+const mostrarEmpleado = (empleado: Empleado) => `${empleado.nombre} tiene ${empleado.edad} años`
+
+// Llamamos a la función flecha
+mostrarEmpleado(empleadoMartin)
+
+const datosEmpleado = (empleado: Empleado): string => {
+    if (empleado.edad > 70) {
+        return `Empleado ${empleado.nombre} está en edad de jubilación`
+    } else {
+        return `Empleado ${empleado.nombre} está en edad laboral`
+    }
+}
+
+datosEmpleado(empleadoMartin) // Empleado Martín está en edad laboral
+
+const obtenerSalario = (empleado: Empleado, cobrar: () => `Cobrar`) => {
+    if (empleado.edad > 70) {
+        return 
+    } else {
+        cobrar() // callback a ejecutar
+    }
+}
+
+
+const cobrarEmpleado = (empleado: Empleado) => {
+    console.log(`${empleado.nombre} cobra su salario`)
+}
+
+obtenerSalario(empleadoMartin, () => 'Cobrar')
+
+
+
+// --------------------------------------------------------------------------------------
+// FUNCIONES ASÍNCRONAS Async Function
+
+async function ejemploAsync(): Promise<string> {
+    await console.log("Tarea a completar antes de seguir con la secuencia de instrucciones")
+    console.log("Tarea completada")
+    return "Completado"
+}
+
+ejemploAsync().then((respuesta) => {
+    console.log("Respuesta", respuesta)
+}).catch((error) => {
+    console.log("Ha habido un error", error)
+}).finally(() => "Todo ha terminado")
+
+
+// Generators (Funciones generadoras)
+function* ejemploGenerator() {
+
+    // yield --> para emitir valores
+    let index = 0
+    while (index < 5) {
+        // Emitimos un valor incrementado
+        yield index++
+    }
+
+}
+
+// Guardamos la función generadora en una variable
+let generadora = ejemploGenerator()
+
+// Accedemos a los valores emitidos
+console.log(generadora.next().value) // 0
+console.log(generadora.next().value) // 1
+console.log(generadora.next().value) // 2
+console.log(generadora.next().value) // 3
+
+
+// WORKER
+
+function* watcher(valor: number) {
+    yield valor // emitimmos el valor inicial
+    yield* worker(valor) // Llamamos a las emisiones del worker para que emita otros valores
+    yield valor + 4 // emitimos valor final + 4
+}
+
+function* worker(valor: number) {
+    yield valor + 1
+    yield valor + 2
+    yield valor + 3
+}
+
+let generatorSaga = watcher(0)
+console.log(generatorSaga.next().value) // 0 (lo ha hecho el watcher)
+console.log(generatorSaga.next().value) // 1 (lo ha hecho el worker)
+console.log(generatorSaga.next().value) // 2 (lo ha hecho el worker)
+console.log(generatorSaga.next().value) // 3 (lo ha hecho el worker)
+console.log(generatorSaga.next().value) // 4 (lo ha hecho el watcher)
