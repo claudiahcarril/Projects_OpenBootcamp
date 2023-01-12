@@ -495,13 +495,13 @@ function mostrarError(error: string | number) {
 
 
 // LocalStorage y SessionStorage
-// function guardarEnLocalStorage(): void {
-//     localStorage.set("Nombre", "Martín") //guardar datos
-// }
+function guardarEnLocalStorage(): void {
+    localStorage.set("Nombre", "Martín") //guardar datos
+}
 
-// function leer():void {
-//     let nombre = localStorage.length("nombre") // leer datos
-// }
+function leer():void {
+    let nombre = localStorage.get("nombre") // leer datos
+}
 
 
 
@@ -572,6 +572,9 @@ delete miTemporizador.terminar
 // Importación
 import { Curso } from './models/curso'
 import { Estudiante } from './models/Estudiante'
+import { ITarea, Nivel } from './models/interfaces/ITarea'
+import { Trabajador, Jefe } from './models/Persona'
+import { Programar } from './models/Programar'
 
 
 
@@ -607,4 +610,122 @@ martin.horasEstudiadas //number
 // Saber la instancia de un objeto/variable
 // - typeOf
 // - instanceOf
+
+
+
+let fechaNacimiento = new Date(1990, 8, 9)
+
+if (fechaNacimiento instanceof Date) {
+    console.log("Es una instancia de Date")
+}
+
+
+if (martin instanceof Estudiante) {
+    console.log("Martín es un Estudiante")
+}
+
+
+
+
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+// HERENCIA, POLIMORFISMO, DECORADORES E INTERFACES
+
+let trabajador1 = new Trabajador("Martín", "Perez", 32, 2000)
+let trabajador2 = new Trabajador("Pepe", "Garcia", 34, 1200)
+let trabajador3 = new Trabajador("Juan", "Gonzalez", 54, 2400)
+
+
+let jefe = new Jefe("Pablo", "García", 50)
+
+jefe.trabajadores.push(trabajador1, trabajador2, trabajador3)
+
+trabajador1.saludar() //Especificado de Empleado
+jefe.saludar() // Herencia de Persona
+
+
+
+jefe.trabajadores.forEach((trabajador: Trabajador) => {
+    trabajador.saludar() // especificado en Trabajador
+})
+
+
+// Uso de interfaces
+let programar: ITarea = {
+    titulo: 'Programar en TypeScript',
+    descripcion: 'Practicar con Katas para aprender a desarrollar con TS',
+    completada: false,
+    urgencia: Nivel.Urgente,
+    resumen: function (): string {
+        return `${this.titulo} - ${this.completada} - Nivel: ${this.urgencia}`
+    }
+}
+
+console.log(programar.resumen())
+
+
+// Creando instancia de Programar (Tarea de Programación que implementa ITarea)
+let programarTS = new Programar("TypeScript", "Tarea de programación en TS", false, Nivel.Bloqueante)
+console.log(programarTS.resumen())
+
+
+
+// --------------------------------------------------------------------------------------
+// DECORADORES -> Funciones declaradas a través de @
+// Decoradores experimentales --> @
+
+// 1. Clases
+// 2. Parámetros
+// 3. Métodos
+// 4. Propiedades
+
+function Override(label: string) {
+    return function (target: any, key: string) {
+        Object.defineProperty(target, key, {
+            configurable: false,
+            get: () => label
+        })
+    }
+}
+
+class PruebaDecorador {
+    @Override('Prueba') // Llamar a la función Override
+    nombre: string = "Martín"
+}
+
+let prueba = new PruebaDecorador()
+console.log(prueba.nombre) // "Prueba" siempre va a ser devuelto a través del get()
+
+
+// Otra función para usarla como decorador
+function SoloLectura(target: any, key: string) {
+    Object.defineProperty(target, key, {
+        writable: false
+    })
+}
+
+class PruebaSoloLectura {
+    @SoloLectura
+    nombre: string = ''
+}
+
+let pruebaLectura = new PruebaSoloLectura()
+pruebaLectura.nombre = "Martín"
+console.log(pruebaLectura.nombre) // ==> Undefined, ya que no se le puede dar valor (es solo de lectura)
+
+
+
+// Decorador para parámetros de un método
+function mostrarPosicion(target: any, propertykey: string, parameterIndex: number) {
+    console.log("Posición", parameterIndex)
+}
+
+class PruebaMetodoDecorador {
+    prueba(a: string, @mostrarPosicion b: boolean) {
+        console.log(b)
+    }
+}
+
+// Usamos el método con el parámetro y su decorador
+new PruebaMetodoDecorador().prueba('Hola', false)
 
