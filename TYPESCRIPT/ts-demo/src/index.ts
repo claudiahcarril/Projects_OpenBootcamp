@@ -1,7 +1,7 @@
 // Esto es un comentario en  TS
 
 import { deleteAllCookies, deleteCookie, getCookieValue, setCookie } from 'cookies-utils'
-import { LISTA_CURSOS } from './mock/cursos.mock'
+// import { LISTA_CURSOS } from './mock/cursos.mock'
 
 /**
  * Generando Documentación en TS
@@ -570,8 +570,8 @@ delete miTemporizador.terminar
 // CLASES Y OBJETOS
 
 // Importación
-import { Curso } from './models/curso'
-import { Estudiante } from './models/Estudiante'
+// import { Curso } from './models/curso'
+// import { Estudiante } from './models/Estudiante'
 import { ITarea, Nivel } from './models/interfaces/ITarea'
 import { Trabajador, Jefe } from './models/Persona'
 import { Programar } from './models/Programar'
@@ -580,31 +580,31 @@ import { Programar } from './models/Programar'
 
 // Creamos un curso (Instanciamos)
 
-const cursoTS: Curso = new Curso("TypeScript", 15)
-const cursoJS: Curso = new Curso("JavaScript", 20)
+// const cursoTS: Curso = new Curso("TypeScript", 15)
+// const cursoJS: Curso = new Curso("JavaScript", 20)
 
 
-const listaCursos: Curso[] = LISTA_CURSOS
+// const listaCursos: Curso[] = LISTA_CURSOS
 
-listaCursos.push(cursoTS, cursoJS)
-
-
-// Creamos un estudiante
-
-const martin: Estudiante = new Estudiante("Martin", listaCursos, "San Jose")
-
-console.log(`${martin.nombre} estudia: `)
-martin.cursos.forEach((curso: Curso) => {
-    console.log(`- ${curso.nombre} (${curso.horas}) horas`) // TypeScript (15 horas)
-})
-
-const cursoAngular: Curso = new Curso("Angular", 40)
-
-martin.cursos.push(cursoAngular) // Añadimos
+// listaCursos.push(cursoTS, cursoJS)
 
 
-// Conocer horas estudiadas
-martin.horasEstudiadas //number
+// // Creamos un estudiante
+
+// const martin: Estudiante = new Estudiante("Martin", listaCursos, "San Jose")
+
+// console.log(`${martin.nombre} estudia: `)
+// martin.cursos.forEach((curso: Curso) => {
+//     console.log(`- ${curso.nombre} (${curso.horas}) horas`) // TypeScript (15 horas)
+// })
+
+// const cursoAngular: Curso = new Curso("Angular", 40)
+
+// martin.cursos.push(cursoAngular) // Añadimos
+
+
+// // Conocer horas estudiadas
+// martin.horasEstudiadas //number
 
 
 // Saber la instancia de un objeto/variable
@@ -620,9 +620,9 @@ if (fechaNacimiento instanceof Date) {
 }
 
 
-if (martin instanceof Estudiante) {
-    console.log("Martín es un Estudiante")
-}
+// if (martin instanceof Estudiante) {
+//     console.log("Martín es un Estudiante")
+// }
 
 
 
@@ -679,53 +679,74 @@ console.log(programarTS.resumen())
 // 3. Métodos
 // 4. Propiedades
 
-function Override(label: string) {
-    return function (target: any, key: string) {
-        Object.defineProperty(target, key, {
-            configurable: false,
-            get: () => label
-        })
-    }
-}
+// function Override(label: string) {
+//     return function (target: any, key: string) {
+//         Object.defineProperty(target, key, {
+//             configurable: false,
+//             get: () => label
+//         })
+//     }
+// }
 
-class PruebaDecorador {
-    @Override('Prueba') // Llamar a la función Override
-    nombre: string = "Martín"
-}
+// class PruebaDecorador {
+//     @Override('Prueba') // Llamar a la función Override
+//     nombre: string = "Martín"
+// }
 
-let prueba = new PruebaDecorador()
-console.log(prueba.nombre) // "Prueba" siempre va a ser devuelto a través del get()
-
-
-// Otra función para usarla como decorador
-function SoloLectura(target: any, key: string) {
-    Object.defineProperty(target, key, {
-        writable: false
-    })
-}
-
-class PruebaSoloLectura {
-    @SoloLectura
-    nombre: string = ''
-}
-
-let pruebaLectura = new PruebaSoloLectura()
-pruebaLectura.nombre = "Martín"
-console.log(pruebaLectura.nombre) // ==> Undefined, ya que no se le puede dar valor (es solo de lectura)
+// let prueba = new PruebaDecorador()
+// console.log(prueba.nombre) // "Prueba" siempre va a ser devuelto a través del get()
 
 
+// // Otra función para usarla como decorador
+// function SoloLectura(target: any, key: string) {
+//     Object.defineProperty(target, key, {
+//         writable: false
+//     })
+// }
 
-// Decorador para parámetros de un método
-function mostrarPosicion(target: any, propertykey: string, parameterIndex: number) {
-    console.log("Posición", parameterIndex)
-}
+// class PruebaSoloLectura {
+//     @SoloLectura
+//     nombre: string = ''
+// }
 
-class PruebaMetodoDecorador {
-    prueba(a: string, @mostrarPosicion b: boolean) {
-        console.log(b)
-    }
-}
+// let pruebaLectura = new PruebaSoloLectura()
+// pruebaLectura.nombre = "Martín"
+// console.log(pruebaLectura.nombre) // ==> Undefined, ya que no se le puede dar valor (es solo de lectura)
 
-// Usamos el método con el parámetro y su decorador
-new PruebaMetodoDecorador().prueba('Hola', false)
 
+
+// // Decorador para parámetros de un método
+// function mostrarPosicion(target: any, propertykey: string, parameterIndex: number) {
+//     console.log("Posición", parameterIndex)
+// }
+
+// class PruebaMetodoDecorador {
+//     prueba(a: string, @mostrarPosicion b: boolean) {
+//         console.log(b)
+//     }
+// }
+
+// // Usamos el método con el parámetro y su decorador
+// new PruebaMetodoDecorador().prueba('Hola', false)
+
+
+
+
+
+
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+// PATRONES CREACIONALES
+
+// const miPrimerSingleton = Singleton.getInstance()
+// const miSegundoSingleton = Singleton.getInstance()
+
+
+// // Comprueba si ambos son iguales
+// if (miPrimerSingleton === miSegundoSingleton) {
+//     console.log('Singleton funciona correctamente, ambas variables contienen la misma instancia.');
+//     miPrimerSingleton.mostrarPorConsola()
+//     miSegundoSingleton.mostrarPorConsola()
+// } else {
+//     console.log('Error, las variables contienen distintas instancias');
+// }
