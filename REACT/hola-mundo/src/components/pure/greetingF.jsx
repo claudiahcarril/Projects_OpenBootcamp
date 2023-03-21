@@ -25,9 +25,9 @@ const GreetingF = (props) => {
         <h1>
             ¡HOLA { props.name } desde componente funcional!
         </h1>
-         {/* <h2>
-            Tu edad es de: { state.age } años
-        </h2> */}
+         <h2>
+            Tu edad es de: { age } años
+        </h2>
         <div>
             <button onClick={birthday}>Cumplir años</button>
         </div>
