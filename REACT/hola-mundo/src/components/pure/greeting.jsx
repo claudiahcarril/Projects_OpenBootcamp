@@ -28,16 +28,29 @@ class Greeting extends Component {
                 <h2>
                     Tu edad es de: { this.state.age } años
                 </h2>
+                <div>
+                    <button onClick={this.birthday}>Cumplir años</button>
+                </div>
             </div>
         );
     }
+
+    // Cambiando el state (que es privado) con setState (generando un nuevo estado) --> Nueva renderización en la vista
+    birthday = () => {
+        this.setState((prevState) => (
+            {
+                age: prevState.age + 1
+            }
+        ))
+    }
+
 }
 
 /**
  * propTypes --> el contenido que se le puede pasar a un componente desde un componente de orden superior
  */
 Greeting.propTypes = {
-
+    name: PropTypes.string 
 };
 
 
